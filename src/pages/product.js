@@ -8,7 +8,11 @@ const Product = ({ navigation }) => (
 )
 
 Product.navigationOptions = ({navigation}) => ({
-  title: navigation.state.params.product.title
+  title: navigation.state.params.product.title,
+  headerStyle: {
+    backgroundColor: '#993399',
+  },
+  headerTintColor: '#FFF'
 })
 
 export default Product

@@ -8,7 +8,7 @@ export default class Main extends Component {
   static navigationOptions = {
     title: 'Main',
     headerStyle: {
-      backgroundColor: '#993399'
+      backgroundColor: '#993399',
     },
     headerTintColor: '#FFF'
   }
