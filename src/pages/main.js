@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
 
-import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native'
+import { 
+  View, 
+  Text, 
+  FlatList, 
+  TouchableOpacity, 
+  StyleSheet, 
+  ActivityIndicator 
+} from 'react-native'
 import api from '../services/api'
 
 export default class Main extends Component {
 
   static navigationOptions = {
-    title: 'Main',
+    title: 'Lista de tecnologia',
     headerStyle: {
       backgroundColor: '#993399',
     },
@@ -59,16 +66,22 @@ export default class Main extends Component {
     }
 
   render () {
+    console.log('aaaaaaaa')
     return (
       <View style={ styles.container }>
-        <FlatList
-          contentContainerStyle={ styles.list }
-          data={ this.state.docs }
-          keyExtractor={ item => item._id }
-          renderItem={ this._renderItem }
-          onEndReached={ this._loadMore }
-          onEndReachedThreshold={ 0.1 }
-        />
+        { !this.state.docs.length && (
+          <ActivityIndicator size="large" color="#993399" style={{ marginTop: 20 }} />
+        ) || (
+          <FlatList
+            contentContainerStyle={ styles.list }
+            data={ this.state.docs }
+            keyExtractor={ item => item._id }
+            renderItem={ this._renderItem }
+            onEndReached={ this._loadMore }
+            onEndReachedThreshold={ 0.1 }
+          />
+        ) }
+       
       </View>
     )
   }
